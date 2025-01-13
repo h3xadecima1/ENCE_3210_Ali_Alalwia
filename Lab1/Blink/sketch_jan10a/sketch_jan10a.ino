@@ -1,4 +1,4 @@
-//Blinky Program
+//Blink LED Program
 #define PORTB5 0x20
 // Data Direction Register for port B
 #define myDDRB (*(volatile uint8_t *) 0x24)   
