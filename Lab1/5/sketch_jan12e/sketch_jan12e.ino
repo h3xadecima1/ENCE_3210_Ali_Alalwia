@@ -5,7 +5,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(RED_LED, OUTPUT);
   pinMode(GREEN_LED, OUTPUT);
-  int data[] = {1, 2, 3, 4, 2, 1, 5, 2, 3};  // Sample data array
+  int data[] = {1, 2, 3, 4, 2, 1, 5, 2, 3, 1};  // Sample data array
   int pattern[] = {2, 3, 1};  // Pattern to search
   int pattern_len = sizeof(pattern) / sizeof(pattern[0]);  // Length of the pattern
   int count = 0;  // Counter for pattern occurrences
