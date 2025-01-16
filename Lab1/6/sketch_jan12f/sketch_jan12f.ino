@@ -10,19 +10,21 @@ int arr[6] = {0x04, 0x06, 0x07, 0x03, 0x01, 0x05};
 
 void setup() {
   myDDRB &= PORTB5;
+  myPORTB &= 0x00;
 }
-
 void loop() {
-  if (PINB &(1<<PINB3)){
+  if (PINB ^(0<<PINB3)){
     int i = 0;
-    while (i < 6 )
+    while (i < 6)
     {
+      if(myPORTB == 0x00){
       myPORTB ^= arr[i];
       delay(1000);
       myPORTB ^= arr[i];
       delay(1000);
       i++;
       i = i % 6;
+      }
     }
   }
 }
