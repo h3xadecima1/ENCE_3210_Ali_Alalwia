@@ -1,48 +1,55 @@
 // LED Sequence Program
+// LEDs PD4 and PD5
 // Mask for PORTB to turn the first 3 bits on 00000111
-#define PORTB_MASK 0x07
-#define BUTTON_1
-#define BUTTON_2
+#define PORTD_MASK 0x30
+#define BUTTON_1 3
+#define BUTTON_2 2
 // Data Direction Register for port B
-#define myDDRB (*(volatile uint8_t *) 0x24)   
+#define myDDRD (*(volatile uint8_t *) 0x2A)   
 // Data Register for port B
-#define myPORTB (*(volatile uint8_t *) 0x25)
+#define myPORTD (*(volatile uint8_t *) 0x2B)
 // Input Register for port B
-#define myPINB (*(volatile uint8_t *) 0x23)
+#define myPIND (*(volatile uint8_t *) 0x29)
 
 // Array to control the LED Sequence
-int arr[6] = {0x04, 0x06, 0x07, 0x03, 0x01, 0x05};
+int arr[6] = {0x20, 0x30, 0x30, 0x10, 0x10, 0x20};
+//the main condition that triggers the sequence
+static volatile bool start = false;
 
 void setup() {
-  // Set the first 3 pins of port B as output (00000111)
-  myDDRB |= PORTB_MASK;
-  
+  // Set the first 3 pins of port B as output (00110000)
+  myDDRD |= PORTD_MASK;
   // Initialize PORTB to 0 (turn off all LEDs initially)
-  myPORTB &= ~PORTB_MASK;
+  myPORTD &= ~PORTD_MASK;
   attachInterrupt(digitalPinToInterrupt(BUTTON_1), isr_button1, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(BUTTON_2), isr_button2, CHANGE);
 }
 
 void loop() {
   // Check if the button on PINB3 is pressed
-  if (myPINB & (1 << PINB3)) {
+  if (start == true) {
     int i = 0;
-    
-    while (i < 6) {
-      if (myPORTB == 0x00) {
-        // Turn on the LED pattern
-        myPORTB ^= arr[i];
-        delay(1000);  // Wait for 1 second
-        // Turn off the LED pattern
-        myPORTB ^= arr[i];
-        delay(1000);  // Wait for 1 second
-        
-        // Move to the next pattern in the array
-        i++;
-      }
+    while (i < 6 && start == true) {
+      // Turn on the LED pattern
+      myPORTD ^= arr[i];
+      delay(1000);  // Wait for 1 second
+      // Turn off the LED pattern
+      myPORTD ^= arr[i];
+      delay(1000);  // Wait for 1 second
       
+      // Move to the next pattern in the array
+      i++;
+    
       // Ensure i stays within the bounds of the array
       i = i % 6;
     }
   }
 }
+
+void isr_button1()
+{
+  if(digitalRead(BUTTON_1))
+  {
+    start = !start;
+  }
+}
+
