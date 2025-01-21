@@ -10,7 +10,7 @@
 #define myPINB (*(volatile uint8_t *) 0x23)
 
 // Array to control the LED Sequence
-int arr[6] = {0x04, 0x06, 0x07, 0x03, 0x01, 0x05};
+int reg_array[6] = {0x04, 0x06, 0x07, 0x03, 0x01, 0x05};
 
 void setup() {
   // Set the first 3 pins of port B as output (00000111)
@@ -28,10 +28,10 @@ void loop() {
     while (i < 6) {
       if (myPORTB == 0x00) {
         // Turn on the LED pattern
-        myPORTB ^= arr[i];
+        myPORTB ^= reg_array[i];
         delay(1000);  // Wait for 1 second
         // Turn off the LED pattern
-        myPORTB ^= arr[i];
+        myPORTB ^= reg_array[i];
         delay(1000);  // Wait for 1 second
         
         // Move to the next pattern in the array

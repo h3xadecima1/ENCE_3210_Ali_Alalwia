@@ -1,4 +1,4 @@
-//  program to detect a specified pattern with three entries in an array
+// program to detect a specified pattern with three entries in an array
 #define RED_LED 6
 #define GREEN_LED 7
 void setup() {

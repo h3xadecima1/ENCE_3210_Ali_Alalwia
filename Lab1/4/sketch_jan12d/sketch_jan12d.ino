@@ -5,7 +5,7 @@ void setup()
 {
   Serial.begin(9600);
   // an array contains random distributed charcters to iterate through
-  char alphabet_arr[29] = 
+  char alphabet_array[29] = 
   {
     'b', 'z', 'e', 'q', 'r', 'd', 
     's', 'g', 'v', 'b', 'r', 'g', 
@@ -20,17 +20,17 @@ void setup()
   //for loop to iterate through the array and find the letters and updating the counters
   for(int i = 1 ; i <= sizeof(alphabet_arr); i++)
   {
-    if(alphabet_arr[i] == 'r')
+    if(alphabet_array[i] == 'r')
     {
       Serial.print("Red\n"); // prints red instead of turning on an LED
       red +=1; // updates the red color counter
     }
-    else if(alphabet_arr[i] == 'g')
+    else if(alphabet_array[i] == 'g')
     {
       Serial.print("Green\n"); // prints Green instead of turning on an LED
       green +=1; // updates the Green color counter
     }
-    else if(alphabet_arr[i] == 'b')
+    else if(alphabet_array[i] == 'b')
     {
       Serial.print("Blue\n"); // prints Blue instead of turning on an LED
       blue +=1; // updates the red Blue counter

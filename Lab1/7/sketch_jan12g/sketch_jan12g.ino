@@ -4,12 +4,12 @@
 #define greenLed 12      // Green LED to indicate operation
 #define blueLed 13       // Blue LED to indicate operation
 
-int arr1[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  // First array
-int arr2[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  // Second array
-int result[10] = {};  // Array to store results of operations
-int counter = 0;       // Track number of button presses
-int buttonState = 0;   // Current state of the select button
-int lastButtonState = 0;  // Previous state of the select button
+int gArr1[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  // First array
+int gArr2[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  // Second array
+int gResult[10] = {};  // Array to store results of operations
+int gCounter = 0;       // Track number of button presses
+int gButtonState = 0;   // Current state of the select button
+int gLastButtonState = 0;  // Previous state of the select button
 
 void setup() {
   Serial.begin(9600);
@@ -22,28 +22,28 @@ void setup() {
 
 void loop() {
   // Check if the select button is pressed to change the operation
-  buttonState = digitalRead(selectButton);
+  gButtonState = digitalRead(selectButton);
   
   // Detect button press (LOW to HIGH transition for selectButton)
-  if (buttonState == HIGH && lastButtonState == LOW) {
+  if (gButtonState == HIGH && gLastButtonState == LOW) {
     delay(50);  // Debounce delay
     counter++;
-    if (counter > 3) {
-      counter = 1;  // Reset counter after 3 clicks
+    if (gCounter > 3) {
+      gCounter = 1;  // Reset counter after 3 clicks
     }
 
     // Update the LEDs based on the counter (operation type)
-    digitalWrite(redLed, (counter == 1) ? HIGH : LOW);
-    digitalWrite(greenLed, (counter == 2) ? HIGH : LOW);
-    digitalWrite(blueLed, (counter == 3) ? HIGH : LOW);
+    digitalWrite(redLed, (gCounter == 1) ? HIGH : LOW);
+    digitalWrite(greenLed, (gCounter == 2) ? HIGH : LOW);
+    digitalWrite(blueLed, (gCounter == 3) ? HIGH : LOW);
     
     // Print the current operation type for debugging
     Serial.print("Operation mode: ");
-    if (counter == 1) {
+    if (gCounter == 1) {
       Serial.println("Add");
-    } else if (counter == 2) {
+    } else if (gCounter == 2) {
       Serial.println("Subtract");
-    } else if (counter == 3) {
+    } else if (gCounter == 3) {
       Serial.println("Multiply");
     }
   }
@@ -51,7 +51,7 @@ void loop() {
   // If the run button is pressed, perform the operation
   if (digitalRead(runButton) == HIGH) {
     // Perform the operation based on the current counter value
-    operationMatrix(arr1, arr2, result, counter);
+    operationMatrix(gArr1, gArr2, gResult, gCounter);
     
     // Print the results for debugging
     Serial.println("Result:");
@@ -66,18 +66,18 @@ void loop() {
   }
 
   // Update the last button state
-  lastButtonState = buttonState;
+  gLastButtonState = gButtonState;
 }
 
 // Function to perform the operation based on the counter value
-void operationMatrix(int arrA[], int arrB[], int result[], int counter) {
+void operationMatrix(int arrayA[], int arrayB[], int result[], int counter) {
   for (int i = 0; i < 10; i++) {
     if (counter == 1) {
-      result[i] = arrA[i] + arrB[i];  // Add
+      result[i] = arrayA[i] + arrayB[i];  // Add
     } else if (counter == 2) {
-      result[i] = arrA[i] - arrB[i];  // Subtract
+      result[i] = arrayA[i] - arrayB[i];  // Subtract
     } else if (counter == 3) {
-      result[i] = arrA[i] * arrB[i];  // Multiply
+      result[i] = arrayA[i] * arrayB[i];  // Multiply
     }
   }
 }

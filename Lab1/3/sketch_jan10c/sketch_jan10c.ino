@@ -4,7 +4,7 @@ and write this number to the memory addrerss after the array */
 void setup() 
 {
   // Arry with random numbers
-  int arr[50] = 
+  int array[50] = 
   {
     12, 43, 22, 31, 67, 78, 33, 55, 
     90, 32, 12, 30, 98, 88, 1, 2, 3, 
@@ -15,25 +15,25 @@ void setup()
   };
   Serial.begin(9600);
   // max1 and max2 used to find the second max value in the arry 
-  int max1 = arr[0]; 
-  int max2 = arr[0];
+  int maxNumber1 = arrayMax1[0]; 
+  int maxNumber2 = arrayMax2[0];
   //for loop to iterate through the array and find the max values
   for (int i = 1; i < 50; i++) 
   {
-      if (arr[i] > max1) 
+      if (array[i] > maxNumber1) 
       {
-          max2 = max1; 
-          max1 = arr[i]; 
+          maxNumber2 = maxNumber1; 
+          maxNumber1 = array[i]; 
       } 
-      else if (arr[i] > max2 && arr[i] != max1) 
+      else if (array[i] > maxNumber2 && array[i] != maxNumber1) 
       { 
-          max2 = arr[i];
+          maxNumber2 = array[i];
       }
   }
   // Writing the second maximum to the memory location just after the array
-  int *pResult = (int *)(arr + 50); // Pointer to the memory location after the array
-  *pResult = max2;
-  Serial.print(max2);
+  int *pResult = (int *)(array + 50); // Pointer to the memory location after the array
+  *pResult = maxNumber2;
+  Serial.print(maxNumber2);
 }
 
 void loop() {
