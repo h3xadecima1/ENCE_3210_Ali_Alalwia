@@ -8,8 +8,8 @@ void setup() {
   // this loop with increase the value of i from 0 - 360
    for (int i = 0; i <= 360; i++)
   {
-    // stores the vlue of cos(i) in the index of the value of i
-    gCosArray[i] = cos(i);
+    // stores the vlue of cos(i) in the index of the value of i in degrees
+    gCosArray[i] = (cos(i)*(180/3.14159));
     // print the value of i using the serial moniter
     Serial.print(i);
     // print ':'
