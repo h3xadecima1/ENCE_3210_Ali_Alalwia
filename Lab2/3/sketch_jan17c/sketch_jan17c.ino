@@ -14,11 +14,17 @@ int buttonState = 0;   // Current state of the select button
 int lastButtonState = 0;  // Previous state of the select button
 
 void setup() {
+  // starts the serial protocol at 9600 baud rate
   Serial.begin(9600);
+  //set red led pin to output mode
   pinMode(redLed, OUTPUT);
+  // set greeen led pin to output mode
   pinMode(greenLed, OUTPUT);
+  // sets blue led pin to output mode
   pinMode(blueLed, OUTPUT);
+  // attach an interrupt to the select button  that will run only if the button is pressed
   attachInterrupt(digitalPinToInterrupt(selectButton), isr_button1, CHANGE);
+  // attach an interrupt to the run button  that will run only if the button is pressed
   attachInterrupt(digitalPinToInterrupt(runButton), isr_button2, CHANGE);
 }
 
@@ -27,7 +33,7 @@ void loop() {
       if (counter > 3) {
         counter = 1;  // Reset counter after 3 clicks
       }
-      // Update the LEDs based on the counter (operation type)
+      // Update the LEDs based on the counter (operation type) 
       digitalWrite(redLed, (counter == 1) ? HIGH : LOW);
       digitalWrite(greenLed, (counter == 2) ? HIGH : LOW);
       digitalWrite(blueLed, (counter == 3) ? HIGH : LOW);
@@ -72,15 +78,21 @@ void operationMatrix(int arrA[], int arrB[], int result[], int counter)
     }
   }
 }
-
+// interrupt runs only if the select button was pressed 
 void isr_button1()
 {
+  // enables the select button
   select = true;
+  //disables the run button 
   run = false;
+  //increase the operation counter by 1
   counter++;
 }
+// interrupt runs only if the run button was pressed 
 void isr_button2()
 {
+  //disables the select button
   select = false;
+  // enables the run button
   run = true;
 }

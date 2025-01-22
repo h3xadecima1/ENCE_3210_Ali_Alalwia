@@ -2,7 +2,9 @@
 // LEDs PD4 and PD5
 // Mask for PORTB to turn the first 3 bits on 00000111
 #define PORTD_MASK 0x30
+// Button 1 pin definition
 #define BUTTON_1 3
+// Button 2 pin definition
 #define BUTTON_2 2
 // Data Direction Register for port B
 #define myDDRD (*(volatile uint8_t *) 0x2A)   
@@ -44,11 +46,13 @@ void loop() {
     }
   }
 }
-
+// interrupt attached to button 1 to make it as a toggle button to start and stop the led sequence
 void isr_button1()
 {
+  // checks if button 1 is pressed
   if(digitalRead(BUTTON_1))
   {
+    // change the state of the start from true to false or false to true when Button 1 is pressed 
     start = !start;
   }
 }
