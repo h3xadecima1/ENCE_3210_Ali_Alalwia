@@ -1,3 +1,17 @@
+ /**********************************************************************
+ *                                                                     
+ * File: sketch_jan17c.ino                                          
+ *                                                                     
+ * Author: AG                        
+ *                                                                     
+ * Date: 01-17-2025      
+ *
+ * Description: simple calculator that Multiply, adds or subtract  two
+ *               arrays and storer the results in new array
+ *
+ **********************************************************************/
+
+
 #define selectButton 3   // Button for selecting the operation
 #define runButton 2     // Button for triggering the operation
 #define redLed 4        // Red LED to indicate operation

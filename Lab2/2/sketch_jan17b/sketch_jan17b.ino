@@ -1,3 +1,17 @@
+ /**********************************************************************
+ *                                                                     
+ * File: sketch_jan17b.ino                                          
+ *                                                                     
+ * Author: AG                        
+ *                                                                     
+ * Date: 01-17-2025      
+ *
+ * Description: Turn on and off the red, green, and blue LEDs 
+ *              in a sequence.
+ *
+ **********************************************************************/
+
+ 
 // LED Sequence Program
 // LEDs PD4 and PD5
 // Mask for PORTB to turn the first 3 bits on 00000111

@@ -1,3 +1,15 @@
+ /**********************************************************************
+ *                                                                     
+ * File: sketch_jan17d.ino                                          
+ *                                                                     
+ * Author: AG                        
+ *                                                                     
+ * Date: 01-17-2025      
+ *
+ * Description: calculate global integer array 𝑦[𝑛] = 2 ∗ 𝑥[𝑛] − 𝑥[𝑛 − 1]
+ *              using ISR. 
+ *
+ **********************************************************************/
 #define isrButton 3   // Button Pin definitions
 
 // Define global arrays
