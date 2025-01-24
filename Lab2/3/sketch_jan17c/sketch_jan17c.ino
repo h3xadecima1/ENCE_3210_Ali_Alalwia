@@ -1,14 +1,14 @@
  /**********************************************************************
- *                                                                     
- * File: sketch_jan17c.ino                                          
- *                                                                     
- * Author: AG                        
- *                                                                     
- * Date: 01-17-2025      
- *
- * Description: simple calculator that Multiply, adds or subtract  two
- *               arrays and storer the results in new array
- *
+ *                                                                     *
+ * File: sketch_jan17c.ino                                             *
+ *                                                                     *
+ * Author: AG                                                          *
+ *                                                                     *
+ * Date: 01-17-2025                                                    *
+ *                                                                     *
+ * Description: simple calculator that Multiply, adds or subtract  two *
+ *               arrays and storer the results in new array            *
+ *                                                                     *
  **********************************************************************/
 
 

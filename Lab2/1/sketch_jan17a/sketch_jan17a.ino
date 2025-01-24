@@ -1,14 +1,14 @@
  /**********************************************************************
- *                                                                     
- * File: sketch_jan17a.ino                                          
- *                                                                     
- * Author: AG                        
- *                                                                     
- * Date: 01-17-2025      
- *
- * Description: count the difference between the number of times  
- *              two different buttons arepressed.
- *
+ *                                                                     *
+ * File: sketch_jan17a.ino                                             *
+ *                                                                     *
+ * Author: AG                                                          *
+ *                                                                     *
+ * Date: 01-17-2025                                                    *
+ *                                                                     *
+ * Description: count the difference between the number of times       *
+ *              two different buttons arepressed.                      *
+ *                                                                     *
  **********************************************************************/
 
 // red led pin definition

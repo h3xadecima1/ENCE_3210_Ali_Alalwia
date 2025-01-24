@@ -1,14 +1,14 @@
  /**********************************************************************
- *                                                                     
- * File: sketch_jan17b.ino                                          
- *                                                                     
- * Author: AG                        
- *                                                                     
- * Date: 01-17-2025      
- *
- * Description: Turn on and off the red, green, and blue LEDs 
- *              in a sequence.
- *
+ *                                                                     *
+ * File: sketch_jan17b.ino                                             *
+ *                                                                     *
+ * Author: AG                                                          *
+ *                                                                     *
+ * Date: 01-17-2025                                                    *
+ *                                                                     *
+ * Description: Turn on and off the red, green, and blue LEDs          *
+ *              in a sequence.                                         *
+ *                                                                     *
  **********************************************************************/
 
  
