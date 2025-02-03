@@ -2577,35 +2577,35 @@
 		(uuid "9dbeb636-ae9b-4b84-989c-b87c47a44e4e")
 	)
 	(no_connect
-		(at 119.38 41.91)
+		(at 120.65 43.18)
 		(uuid "0b2757f6-9a29-4a63-b1a3-312c9ff9ca8e")
 	)
 	(no_connect
-		(at 82.55 81.28)
+		(at 82.55 82.55)
 		(uuid "1243ec8d-4dad-4457-94da-b919e01a2aa1")
 	)
 	(no_connect
-		(at 82.55 53.34)
+		(at 82.55 54.61)
 		(uuid "128d27a2-c5d5-4143-b1fe-40bb24751b5b")
 	)
 	(no_connect
-		(at 27.94 73.66)
+		(at 29.21 74.93)
 		(uuid "15734e37-4a78-4a80-ab11-227f9c3771bc")
 	)
 	(no_connect
-		(at 82.55 48.26)
+		(at 82.55 49.53)
 		(uuid "18a519d9-4228-499f-a8e1-803cffd9a9d6")
 	)
 	(no_connect
-		(at 27.94 71.12)
+		(at 29.21 72.39)
 		(uuid "1bb499a7-e57d-44db-bd5b-a8d6993876ea")
 	)
 	(no_connect
-		(at 27.94 76.2)
+		(at 29.21 77.47)
 		(uuid "2887701a-6e71-443a-8965-002a06799bbc")
 	)
 	(no_connect
-		(at 119.38 44.45)
+		(at 120.65 45.72)
 		(uuid "2f17267b-ebcd-4c76-9a9d-fa93fee18f20")
 	)
 	(no_connect
@@ -2613,39 +2613,39 @@
 		(uuid "39ee27d3-136e-4cca-a41a-b0cf9dacdf32")
 	)
 	(no_connect
-		(at 82.55 40.64)
+		(at 82.55 41.91)
 		(uuid "548f5a8b-c606-43f3-8ecd-43d86e1312da")
 	)
 	(no_connect
-		(at 119.38 39.37)
+		(at 120.65 40.64)
 		(uuid "9736e892-b86d-4ee7-8893-79fe1d9379a5")
 	)
 	(no_connect
-		(at 27.94 66.04)
+		(at 29.21 67.31)
 		(uuid "ac3b733b-b662-4185-9128-0b1da043a8d1")
 	)
 	(no_connect
-		(at 82.55 43.18)
+		(at 82.55 44.45)
 		(uuid "db65cfd7-e699-4e20-bb9c-ce2cba06ad62")
 	)
 	(no_connect
-		(at 82.55 45.72)
+		(at 82.55 46.99)
 		(uuid "e587fcc8-9138-42a8-adb0-5bf057665a45")
 	)
 	(no_connect
-		(at 119.38 36.83)
+		(at 120.65 38.1)
 		(uuid "e778be56-1b51-47ba-909f-1f57cd8f9b27")
 	)
 	(no_connect
-		(at 82.55 35.56)
+		(at 82.55 36.83)
 		(uuid "f2980f00-c834-4bf2-9045-07460fdc6792")
 	)
 	(no_connect
-		(at 82.55 78.74)
+		(at 82.55 80.01)
 		(uuid "f3a06653-0d8e-48aa-ac18-bc5f1d08800d")
 	)
 	(no_connect
-		(at 27.94 68.58)
+		(at 29.21 69.85)
 		(uuid "f9f5e7b0-969b-4f49-8d1b-a48cd816a664")
 	)
 	(wire
@@ -3605,6 +3605,18 @@
 			)
 		)
 		(uuid "ab475ac3-d32f-410e-a411-9ad2cb1d43c7")
+	)
+	(text "DIGITAL SENSOR"
+		(exclude_from_sim no)
+		(at 149.098 93.472 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+			)
+		)
+		(uuid "d6383f7a-9d92-4b3f-a777-643c2b7c50c3")
 	)
 	(text "UNO SHIELD"
 		(exclude_from_sim no)
