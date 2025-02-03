@@ -1,3 +1,14 @@
+/************************************************************************* 
+*                                                                        * 
+* File: sketch.ino                                                       *
+*                                                                        * 
+* Author: AG                                                             *
+*                                                                        * 
+* Date: 01-24-2025                                                       *
+*                                                                        * 
+* Description: SOS Morse Code using Led .                                * 
+*                                                                        * 
+*************************************************************************/ 
 #include <Wire.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
