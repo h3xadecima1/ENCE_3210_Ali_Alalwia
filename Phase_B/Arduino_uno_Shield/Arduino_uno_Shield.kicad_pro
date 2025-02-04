@@ -496,7 +496,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "Arduino_temp_Shield",
+      "plot": "gerber/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "docs/Arduino_uno_Shield.step",
