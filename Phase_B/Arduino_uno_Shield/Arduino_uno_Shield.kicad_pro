@@ -499,7 +499,7 @@
       "plot": "Arduino_temp_Shield",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "docs/Arduino_uno_Shield.step",
       "svg": "",
       "vrml": ""
     },

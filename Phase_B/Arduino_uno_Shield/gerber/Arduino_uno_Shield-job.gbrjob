@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "8.0.8"
     },
-    "CreationDate": "2025-01-31T17:17:16-07:00"
+    "CreationDate": "2025-02-03T17:03:32-07:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -44,6 +44,16 @@
       "FilePolarity": "Positive"
     },
     {
+      "Path": "Arduino_uno_Shield-F_Paste.gbr",
+      "FileFunction": "SolderPaste,Top",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Arduino_uno_Shield-B_Paste.gbr",
+      "FileFunction": "SolderPaste,Bot",
+      "FilePolarity": "Positive"
+    },
+    {
       "Path": "Arduino_uno_Shield-F_Silkscreen.gbr",
       "FileFunction": "Legend,Top",
       "FilePolarity": "Positive"
@@ -51,6 +61,21 @@
     {
       "Path": "Arduino_uno_Shield-B_Silkscreen.gbr",
       "FileFunction": "Legend,Bot",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Arduino_uno_Shield-F_Mask.gbr",
+      "FileFunction": "SolderMask,Top",
+      "FilePolarity": "Negative"
+    },
+    {
+      "Path": "Arduino_uno_Shield-B_Mask.gbr",
+      "FileFunction": "SolderMask,Bot",
+      "FilePolarity": "Negative"
+    },
+    {
+      "Path": "Arduino_uno_Shield-Edge_Cuts.gbr",
+      "FileFunction": "Profile",
       "FilePolarity": "Positive"
     }
   ],
