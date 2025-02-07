@@ -17,7 +17,7 @@
 #include <Adafruit_Sensor.h>
 #define ONE_WIRE_BUS 2                // DS18B20 data wire is connected to input 2
 #define OLED_RESET 4                  // Adafruit needs this but we don't use for I2C
-#define TEMP_UNIT 9                   // Temprature Unit change pin attached to ISR botton 1
+#define TEMP_UNIT 8                   // Temprature Unit change pin attached to ISR botton 1
 #define RESET 10                      // System reset pin attaced to ISR button 2
 #define resetPin 12                   // Arduing reset pin
 static volatile bool gCF = true;      // a boolean variable used to set the temprature units
@@ -31,7 +31,8 @@ void setup()   {
 
   Serial.begin(9600);
   digitalWrite(resetPin, HIGH); //Pin 12 is connected to the reset pin in the arduino board
-  pinMode(resetPin, OUTPUT);  
+  pinMode(resetPin, OUTPUT);
+  pinMode(TEMP_UNIT, INPUT);  
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // initialize with the I2C address of the display
   display.clearDisplay();                     // clear the display buffer
   display.display();                          // update display
@@ -46,8 +47,6 @@ void setup()   {
     Serial.print("Device 0 Address: ");
     printAddress(thermometerAddress);
     Serial.println();
-    // attach an interrupt to the select button  that will run only if the button is pressed
-  attachInterrupt(digitalPinToInterrupt(TEMP_UNIT), isr_button1, CHANGE);
   // attach an interrupt to the run button  that will run only if the button is pressed
   attachInterrupt(digitalPinToInterrupt(RESET), isr_button2, CHANGE);
 
@@ -62,6 +61,10 @@ void setup()   {
 
 
 void loop() {
+  if(digitalRead(TEMP_UNIT) == HIGH)
+  {
+      gCF = !gCF;
+  }
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
   if (a.acceleration.x >= 1)
@@ -115,12 +118,6 @@ void printAddress(DeviceAddress deviceAddress)
   }
 }
 
-// interrupt runs only if the select button was pressed 
-void isr_button1()
-{
-  // enables the select button
-  gCF = !gCF;
-}
 // interrupt runs only if the run button was pressed 
 void isr_button2()
 {
