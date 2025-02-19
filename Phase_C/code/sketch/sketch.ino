@@ -125,8 +125,6 @@ void displayTemp(float temperatureReading) {             // temperature comes in
     display.clearDisplay();
     display.display();
     display.drawBitmap(0, 0, images[0], 128, 32, WHITE);
-    display.display();
-
   }
   else if( gLock == true)
   {
@@ -168,7 +166,15 @@ void displayTemp(float temperatureReading) {             // temperature comes in
   }
   if(gONOFF == true)
   {
-
+    display.ssd1306_command(SSD1306_DISPLAYOFF);    
+  }
+  else if(gONOFF == false)
+  {
+    display.ssd1306_command(SSD1306_DISPLAYON);
+    display.display();
+    display.print(DallasTemperature::toFahrenheit(temperatureReading), 1); // rounded to 1 decimal place
+    display.print((char)247);                                              // degree symbol
+    display.println("F");
   }
 }
 
