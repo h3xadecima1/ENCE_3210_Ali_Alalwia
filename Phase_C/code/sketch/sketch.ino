@@ -16,6 +16,7 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
+#include <avr/wdt.h>
 #define OLED 2  
 #define LOCK 3
 #define TEMP_UNIT 4                    
@@ -24,6 +25,7 @@
 #define ONE_WIRE_BUS 7                 
 #define LED_pin 9
 #define DISPLAY 11
+byte addr[8];
 static volatile bool gCF = false;       // a boolean variable used to set the temprature units
 static volatile bool gLock = false;
 static volatile bool gLed = false;
@@ -80,7 +82,6 @@ void loop() {
   {
       gCF = !gCF;
   }
-
   if (digitalRead(CAL) == HIGH && gNo_lock == false)
   {
     gCal = !gCal;
@@ -162,7 +163,7 @@ void displayTemp(float temperatureReading) {             // temperature comes in
   }
   if (gCal == true)
   {
-
+    //nothing
   }
   if(gONOFF == true)
   {
