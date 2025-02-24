@@ -49,126 +49,125 @@ void setup()   {
   display.display();                          // update display
 
   Serial.println("DS18B20 Temperature IC Test");  // prints "DS18B20 Temperature IC Test" to the serial moniter
-  Serial.println("Locating devices...");          // prints "Locating devices..."
-  tempSensor.begin();                             // initialize the temp sensor
+  Serial.println("Locating devices...");   // prints "Locating devices..."
+  tempSensor.begin();    // initialize the temp sensor
 
   if (!tempSensor.getAddress(thermometerAddress, 0))  //checks if thermometer is connected or not
-    Serial.println("Unable to find Device.");         // if the thermometer is not connected prints "Unable to find Device."
+    Serial.println("Unable to find Device.");  // if the thermometer is not connected prints "Unable to find Device."
   else {
-    Serial.print("Device 0 Address: ");              // prints "Device 0 Address: "
-    printAddress(thermometerAddress);                // prints the thermometer address
-    Serial.println();                                // prints an empty line
+    Serial.print("Device 0 Address: "); // prints "Device 0 Address: "
+    printAddress(thermometerAddress);   // prints the thermometer address
+    Serial.println();   // prints an empty line
   }
 
-  tempSensor.setResolution(thermometerAddress, 11);      // set the temperature resolution (9-12)
-  mpu.begin();                                           // initialize the gyro sensor
-  mpu.setAccelerometerRange(MPU6050_RANGE_8_G);          // set mpu sensor Accelerometer Range
-  mpu.setGyroRange(MPU6050_RANGE_500_DEG);               // set mpu sensor gyro range
-  mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);            // sets mpu senor bandwidth
-  delay(100);                                            // 0.1 seconds delay
+  tempSensor.setResolution(thermometerAddress, 11); // set the temperature resolution (9-12)
+  mpu.begin();   // initialize the gyro sensor
+  mpu.setAccelerometerRange(MPU6050_RANGE_8_G);  // set mpu sensor Accelerometer Range
+  mpu.setGyroRange(MPU6050_RANGE_500_DEG);  // set mpu sensor gyro range
+  mpu.setFilterBandwidth(MPU6050_BAND_21_HZ); // sets mpu senor bandwidth
+  delay(100);  // 0.1 seconds delay
 
 }
 void loop() {
-  // Led on / off switch 
-  if(digitalRead(LED_SW) == HIGH && gNo_lock == false)     // checks if the LED button is pressed  and if the lock button is engaged or not
+  // Led on/off switch 
+  if(digitalRead(LED_SW) == HIGH && gNo_lock == false)  // checks if the LED button is pressed  and if the lock button is engaged or not
   {
-    gLed = !gLed;                                         // sets the led on/off condition to true if it was false or false if it was true 
-    if(gLed == true)
+    gLed = !gLed;  // sets the led on/off condition to true if it was false or false if it was true 
+    if(gLed == true) 
     {
-      digitalWrite(LED_pin, HIGH);
+      digitalWrite(LED_pin, HIGH);   // Sets the led Pin to High = LED ON
     }
     else if(gLed == false)
     {
-      digitalWrite(LED_pin, LOW);
+      digitalWrite(LED_pin, LOW);  // Sets the led Pin to LOW = LED OFF
     }
   }
   // Unit C to F button
   if(digitalRead(TEMP_UNIT) == HIGH && gNo_lock == false) // checks if the Temprature unit switch button is pressed  and if the lock button is engaged or not
   {
-      gCF = !gCF;                                         // sets the Units C/F condition to true if it was false or false if it was true
+      gCF = !gCF;  // sets the Units C/F condition to true if it was false or false if it was true
   }
-
   // calibration button
-  if (digitalRead(CAL) == HIGH && gNo_lock == false)      // checks if the Calibration button is pressed  and if the lock button is engaged or not
+  if (digitalRead(CAL) == HIGH && gNo_lock == false) // checks if the Calibration button is pressed  and if the lock button is engaged or not
   {
-    gCal = !gCal;                                          // sets the calibrtion condition to true if it was false or false if it was true
+    gCal = !gCal;  // sets the calibrtion condition to true if it was false or false if it was true
     if (gCal == true)
     {
-      displayTemp(22.0);
-      delay(5000);
+      displayTemp(22.0);  // sets the temprature to 22C/71.6F as for 5 seconds to simulate calibration(give the thermometer time to read new temp)
+      delay(5000);  // 5 seconds delay                                 
     }
   }
   // Screen on / off button
-  if(digitalRead(OLED) == HIGH && gNo_lock == false)      // checks if the Display on/off button is pressed  and if the lock button is engaged or not
+  if(digitalRead(OLED) == HIGH && gNo_lock == false) // checks if the Display on/off button is pressed  and if the lock button is engaged or not
   {
-    gONOFF = !gONOFF;                                     // sets the Display on/off condition to true if it was false or false if it was true
+    gONOFF = !gONOFF;   // sets the Display on/off condition to true if it was false or false if it was true
     if(gONOFF == true)
     {
-      display.ssd1306_command(SSD1306_DISPLAYOFF);    
+      display.ssd1306_command(SSD1306_DISPLAYOFF); // Turns the Display OFF if the ON/OFF button is pressed
     }
     else if(gONOFF == false)
     {
-    display.ssd1306_command(SSD1306_DISPLAYON);
+    display.ssd1306_command(SSD1306_DISPLAYON);  // Turns the Display ON if the ON/OFF button is pressed
     }
   }
   // Lock button
-  if(digitalRead(LOCK) == HIGH )                          // checkes if lock butto is pressed 
+  if(digitalRead(LOCK) == HIGH )  // checkes if lock butto is pressed 
   {
-    gLock = !gLock;                                       // sets the lock condition to true if it was false or false if it was true
-    gNo_lock = !gNo_lock;                                 // sets the button lock to true if it was false or false if it was true to lock or unlock all the buttons
+    gLock = !gLock;   // sets the lock condition to true if it was false or false if it was true
+    gNo_lock = !gNo_lock;   // sets the button lock to true if it was false or false if it was true to lock or unlock all the buttons
   }
   sensors_event_t a, g, temp;                            
-  mpu.getEvent(&a, &g, &temp);                           // reads Accelerometer acceleration, Gyro position  and temprature from memory address
+  mpu.getEvent(&a, &g, &temp);  // reads Accelerometer acceleration, Gyro position  and temprature from memory address
   
-  if (a.acceleration.x >= 1)                             // if the position is >  1 meaning the screen connsctors are up or angeled in that direction
+  if (a.acceleration.x >= 1) // if the position is >  1 meaning the screen connsctors are up or angeled in that direction
   {
-    display.setRotation(0);                              // rotates thte display position upwards
+    display.setRotation(0);  // rotates thte display position upwards
   }
-  else if(a.acceleration.x <= -1)                        // if the position is <  -1 meaning the screen connsctors are upside down or angeled in that direction
+  else if(a.acceleration.x <= -1)  // if the position is <  -1 meaning the screen connsctors are upside down or angeled in that direction
   {
-    display.setRotation(2);                              // rotates thte display position upwards
+    display.setRotation(2);   // rotates thte display position upwards
   }
-  tempSensor.requestTemperatures();                      // request temperature sample from sensor on the one wire bus
+  tempSensor.requestTemperatures();    // request temperature sample from sensor on the one wire bus
   displayTemp(tempSensor.getTempC(thermometerAddress));  // show temperature on OLED display
 
-  delay(500);                                            // update readings every half a second
+  delay(500);      // update readings every half a second
 }
 
-void displayTemp(float temperatureReading) {             // temperature comes in as a float with 2 decimal places
+void displayTemp(float temperatureReading) {  // temperature comes in as a float with 2 decimal places
 
   // set up OLED text size and print the temperature data
-  display.clearDisplay();
-  display.setTextSize(2);
-  display.setTextColor(WHITE);
-  display.setCursor(0, 0);
-  display.println("Temp:");
+  display.clearDisplay();  //Clears the display
+  display.setTextSize(2);  // sets text size to 2
+  display.setTextColor(WHITE); // sets the text color to white
+  display.setCursor(0, 0); // sets the curser position on the display 
+  display.println("Temp:"); // Prints tbe word 'Temp' on the display 
   
-  if(gLock == true)                  // if lock button is on
+  if(gLock == true)  // if lock button is on
   {
-    display.drawBitmap(0, 0, images[0], 128, 32, WHITE);     // displays lock image on the screen
+    display.drawBitmap(0, 0, images[0], 128, 32, WHITE);   // displays lock image on the screen
   }
-  else if(gLock == false)
+  else if(gLock == false)  // if lock button is off                      
   {
-    if(gCF == true)
+    if(gCF == true)    //if Unit button was pressed
     {
-      display.print(DallasTemperature::toFahrenheit(temperatureReading), 1);
-      display.print((char)247);              // degree symbol
-      display.println("F");
+      display.print(DallasTemperature::toFahrenheit(temperatureReading), 1); //converts the temp to Fahrenheit and prints the result on the display 
+      display.print((char)247);    // degree symbol
+      display.println("F");  //prints the letter 'F'
     }
     else if (gCF == false)
     {
-      display.print(temperatureReading, 1);
-      display.print((char)247);              // degree symbol
-      display.println("C");
+      display.print(temperatureReading, 1); //prints the temperature in Celsius on the diplay 
+      display.print((char)247);  // degree symbol
+      display.println("C"); // prints the letter 'C'
     }
   }
-  display.display();                    // update the OLED display with all the new text
+  display.display(); // update the OLED display with all the new text
 }
 
 // print device address from the address array
 void printAddress(DeviceAddress deviceAddress)
 {
-  for (uint8_t i = 0; i < 8; i++)
+  for (uint8_t i = 0; i < 8; i++)  //increase i each loop by 1 until i = 7
   {
     if (deviceAddress[i] < 16) Serial.print("0");
     Serial.print(deviceAddress[i], HEX);
