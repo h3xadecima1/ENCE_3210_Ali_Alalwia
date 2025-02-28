@@ -1,3 +1,15 @@
+ /*************************************************************************
+ *                                                                        *
+ * File: Q2.ino                                                           *
+ *                                                                        *
+ * Author: AG                                                             *
+ *                                                                        *
+ * Date: 01-24-2025                                                       *
+ *                                                                        *
+ * Description: Charge Controller                                         *
+ *                                                                        *
+ *                                                                        *
+ *************************************************************************/
 #include <Adafruit_GFX.h>      // Graphics library for OLED
 #include <Adafruit_SSD1306.h>  // OLED driver library
 
