@@ -3535,6 +3535,17 @@
 			(uuid "16692fa8-2df0-4341-bc1e-9c75658eca9b")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/components/SSCDANN015PAAA5_WHL.STEP"
+			(offset
+				(xyz -0.15 0.8 1.6)
+			)
+			(scale
+				(xyz 0.1001 0.1001 0.1009)
+			)
+			(rotate
+				(xyz -90 -0 90)
+			)
+		)
 	)
 	(footprint "LED_THT:LED_D5.0mm"
 		(layer "F.Cu")
